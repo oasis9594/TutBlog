@@ -1,283 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="../../assets/material-dashboard/img/apple-icon.png" />
-	<link rel="icon" type="image/png" href="../assets/material-dashboard/img/favicon.png" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Landing page for TutBlog">
+    <meta name="author" content="Nikhil Rastogi">
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-	<meta name="viewport" content="width=device-width" />
+    <title>Grayscale - Start Bootstrap Theme</title>
 
-	<!-- Bootstrap core CSS     -->
-	<link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!--iHover CSS-->
+    <link rel="stylesheet" type="text/css" href="../static/ihover-gh-pages/src/ihover.css">
 
-	<!--  Material Dashboard CSS    -->
-	<link href="../assets/material-dashboard/css/material-dashboard.css" rel="stylesheet"/>
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-	<link href="../assets/material-dashboard/css/dashboard.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
-	<!--     Fonts and icons     -->
-	<link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <!-- Theme CSS -->
+    <link href="../static/css/grayscale.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
-<body>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-	<div class="wrapper">
-		<div class="sidebar" data-color="purple" data-image="../assets/material-dashboard/img/sidebar-1.jpg">
-			<div class="logo">
-				<a href="#" class="simple-text">
-					Home
-				</a>
-			</div>
-			<div class="sidebar-wrapper">
-				<ul class="nav">
-					<li class="active">
-						<a href="index.html">
-							<i class="material-icons">dashboard</i>
-							<p>Dashboard</p>
-						</a>
-					</li>
-					<li>
-						<a href="user.html">
-							<i class="material-icons">person</i>
-							<p>User Profile</p>
-						</a>
-					</li>
-					<li>
-						<a href="tutorial.html">
-							<i class="material-icons">content_paste</i>
-							<p>Tutorial List</p>
-						</a>
-					</li>
-					<li>
-						<a href="notifications.html">
-							<i class="material-icons text-gray">notifications</i>
-							<p>Notifications</p>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-pencil"></i> <span class="light">Tut</span>Blog
+                </a>
+            </div>
 
-		<div class="main-panel">
-			<nav class="navbar navbar-transparent navbar-absolute">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a  class="navbar-brand" href="#"><h4>Dashboard</h4></a>
-					</div>
-					<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">dashboard</i>
-									<p class="hidden-lg hidden-md">Dashboard</p>
-								</a>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">notifications</i>
-									<span class="notification">5</span>
-									<p class="hidden-lg hidden-md">Notifications</p>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Mike John responded to your email</a></li>
-									<li><a href="#">You have 5 new tasks</a></li>
-									<li><a href="#">You're now friend with Andrew</a></li>
-									<li><a href="#">Another Notification</a></li>
-									<li><a href="#">Another One</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">person</i>
-									<p class="hidden-lg hidden-md">Profile</p>
-								</a>
-							</li>
-						</ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from courses link when scrolled up past courses section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#courses">Courses</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#loginemail">Login</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="signup.html">Signup</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-					</div>
-				</div>
-			</nav>
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Learn.
+                        <br>by sharing.</h1>
+                        <p class="intro-text">Welcome to TutBlog, where you can learn and blog.
+                            <br>So dive right in!</p>
+                        <a href="#courses" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-			<div class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<h3>
-							Badges
-						</h3>
-						<hr/>
-					</div>
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
-							<div class="card card-stats badge">
-								<div class="card-header circular" data-background-color="red">
-									<i class="material-icons">star</i>
-								</div>
-								<div class="card-content">
-									<p class="category">Points</p>
-									<h3 class="title">100</h3>
-									<p class="category">Badge</p>
-									<h3 class="title">Gold</h3>
-								</div>
-								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
-							<div class="card card-stats badge">
-								<div class="card-header circular" data-background-color="orange">
-									<i class="material-icons">star</i>
-								</div>
-								<div class="card-content">
-									<p class="category">Points</p>
-									<h3 class="title">100</h3>
-									<p class="category">Badge</p>
-								<h3 class="title">Gold</h3>
-								</div>
-								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
-							<div class="card card-stats badge">
-								<div class="card-header circular" data-background-color="purple">
-									<i class="material-icons">star</i>
-								</div>
-								<div class="card-content">
-									<p class="category">Points</p>
-									<h3 class="title">100</h3>
-									<p class="category">Badge</p>
-									<h3 class="title">Gold</h3>
-								</div>
-								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
-							<div class="card card-stats badge">
-								<div class="card-header circular" data-background-color="blue">
-									<i class="material-icons">star</i>
-								</div>
-								<div class="card-content">
-									<p class="category">Points</p>
-									<h3 class="title">100</h3>
-									<p class="category">Badge</p>
-									<h3 class="title">Gold</h3>
-								</div>
-								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
-							<div class="card card-stats badge">
-								<div class="card-header circular" data-background-color="green">
-									<i class="material-icons">star</i>
-								</div>
-								<div class="card-content">
-									<p class="category">Points</p>
-									<h3 class="title">100</h3>
-									<p class="category">Badge</p>
-									<h3 class="title">Gold</h3>
-								</div>
-								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<h3>
-							Latest Activity
-						</h3>
-						<hr/>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card card-stats">
-								<div class="card-header" data-background-color="green">
-									<i class="material-icons">star</i>
-								</div>
-								<div class="card-content">
-									<p class="category">Tutorial Type</p>
-									<h3 class="title">Tutorial Name</h3>
-									<button class="btn btn-success" type="button" name="button">Resume</button>
-								</div>
-								<div class="card-footer">
-									<div class="stats">
-										<p class="title"><i class="material-icons">access_time</i>
-											Tutorial Description</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					<div class="row">
-						<h3>
-							Tutorials Enrolled
-						</h3>
-						<hr/>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card card-stats">
-								<div class="card-header" data-background-color="blue">
-									<i class="material-icons">star</i>
-								</div>
-								<div class="card-content">
-									<p class="category">Tutorial Type</p>
-									<h3 class="title">Tutorial Name</h3>
-									<button class="btn btn-info" type="button" name="button">View Course</button>
-								</div>
-								<div class="card-footer">
-									<div class="stats">
-										<p class="title"><i class="material-icons">info</i>
-											Tutorial Description</p>
-										</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Courses Section -->
+    <section id="courses" class="container content-section text-center">
+        <div class="row">
+            <h2>Courses offered</h2>
+            <br>
+            <div class="col-lg-4" align="center">
+                <div class="ih-item circle effect6 scale_up"><a href="#">
+        			<div class="img"><img src="http://www.businesscomputingworld.co.uk/wp-content/uploads/2015/11/Software-Algorithm.jpg" alt="img"></div>
+        			<div class="info">
+          				<h3>Algorithms</h3>
+          				<p>Explore a wide range of Algorithm Tutorials</p>
+        			</div></a>
+        		</div>
+        	</div>
+        	<div class="col-lg-4" align="center">
+        		<div class="ih-item circle effect6 scale_up"><a href="#">
+        			<div class="img"><img src="http://www.i-programmer.info/images/stories/Projects/Prim/tree.jpg" alt="img"></div>
+        			<div class="info">
+          				<h3>Data Structures</h3>
+          				<p>Explore a wide range of Data Structures Tutorials</p>
+        			</div></a>
+        		</div>
+
+        	</div>
+        	<div class="col-lg-4" align="center">
+        		<div class="ih-item circle effect6 scale_up"><a href="#">
+        			<div class="img"><img src="https://www.netgains.org/wp-content/uploads/2013/07/web-dev-ft-img.png" alt="img"></div>
+        			<div class="info">
+          				<h3>Web Dev</h3>
+          				<p>Coming soon!</p>
+        			</div></a>
+        		</div>
+
+        	</div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container" align="center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Login</h2>
+                    <form>
+  						<div class="form-group row">
+      						<input type="email" class="form-control" id="loginemail" placeholder="E-Mail">
+    					</div>
+						<br>
+  						<div class="form-group row">
+    						<input type="password" class="form-control" id="loginpassword" placeholder="Password">
+    					</div>
+  						<br>
+						<button type="submit" class="btn btn-default btn-lg">Submit</button>
+					</form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Map Section -->
+    <!--<div id="map"></div>-->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; TutBlog 2017</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../static/vendor/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../static/js/grayscale.min.js"></script>
 
 </body>
 
-
-	<!--   Core JS Files   -->
-	<script src="../assets/jquery/jquery.min.js" type="text/javascript"></script>
-	<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../assets/material-dashboard/js/material.min.js" type="text/javascript"></script>
-
-	<!--  Notifications Plugin    -->
-	<script src="../assets/bootstrap/js/bootstrap-notify.js"></script>
-
-	<!-- Material Dashboard javascript methods -->
-	<script src="../assets/material-dashboard/js/material-dashboard.js"></script>
-
-	</html>
+</html>
