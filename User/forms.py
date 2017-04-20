@@ -27,9 +27,9 @@ class SignUpForm(UserCreationForm):
 		fields = ('username', 'email', 'password1', 'password2', )
 
 class UserForm(forms.ModelForm):
-	first_name = forms.CharField(label="First Name", max_length=30,
+	first_name = forms.CharField(required=False, label="First Name", max_length=30,
 		widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'first_name'}))
-	last_name = forms.CharField(label="Last Name", max_length=30,
+	last_name = forms.CharField(required=False, label="Last Name", max_length=30,
 		widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'last_name'}))
 	email = forms.EmailField(max_length=254, 
 		widget=forms.EmailInput(attrs={'class': 'form-control', 'name': 'email'}))
@@ -38,15 +38,17 @@ class UserForm(forms.ModelForm):
 		fields = ('first_name', 'last_name', 'email')
 
 class ProfileForm(forms.ModelForm):
-	mobile=forms.IntegerField(label="Mobile Number",
+	profile_image = forms.ImageField(required=False, 
+		widget=forms.FileInput(attrs={'id':'fileUpload', 'onChange':'readURL(this);'}))
+	mobile=forms.IntegerField(required=False, label="Mobile Number",
 		widget=forms.NumberInput(attrs={'class': 'form-control', 'name': 'mobile'}))
-	city = forms.CharField(label="City", max_length=30,
+	city = forms.CharField(required=False, label="City", max_length=30,
 		widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'city'}))
-	country = forms.CharField(label="Country", max_length=30,
+	country = forms.CharField(required=False, label="Country", max_length=30,
 		widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'country'}))
-	bio = forms.CharField(label="About Me", max_length=500,
+	bio = forms.CharField(required=False, label="About Me", max_length=500,
 		widget=forms.Textarea(attrs={'class': 'form-control', 'name': 'bio', 'rows': '2'}))
 	class Meta:
 		model = Profile
-		fields = ('mobile', 'city', 'country', 'bio')
+		fields = ('profile_image','mobile', 'city', 'country', 'bio')
 		

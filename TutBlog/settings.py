@@ -136,3 +136,6 @@ EMAIL_HOST_USER = 'tutblog123@gmail.com'
 EMAIL_HOST_PASSWORD = 'rastogi_gupta'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

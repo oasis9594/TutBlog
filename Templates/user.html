@@ -25,7 +25,11 @@
 	<!--     Fonts and icons     -->
 	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
+<style>
+#fileUpload{
+	display: none;
+}
+</style>
 </head>
 
 <body>
@@ -125,17 +129,18 @@
 									<h4 class="title">Edit Profile</h4>
 								</div>
 								<div class="card-content">
-									<form method="post" >
+									<form method="post" enctype="multipart/form-data">
 										{% csrf_token %}
-										<!--<div class="row">
+										<div class="row">
 											<div class="col-sm-2 col-sm-offset-3 col-xs-6 col-xs-offset-1">
-												<input id="fileUpload" type="file" style="display: none;" onChange="readURL(this);">
+												<!--<input id="fileUpload" type="file" onChange="readURL(this);">-->
+												{{profile_form.profile_image}}
 												<div class="row" >
 													<div class="col-xs-12" id="image-holder">
 
 														<div class="ih-item circle effect19"><a href="#">
 															<div class="spinner"></div>
-															<div class="img"><img id="my-image" class="img-responsive" src="../static/material-dashboard/img/faces/marc.jpg" alt="img"></div>
+															<div class="img"><img id="my-image" class="img-responsive" src="{{user.profile.image_url}}" alt="img"></div>
 															<div class="info">
 																<div class="info-back">
 																	<h3><i class="fa fa-camera" style="font-size:50px;"></i></h3>
@@ -147,7 +152,7 @@
 														</div>
 													</div>
 												</div>
-											</div> -->
+											</div> 
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group label-floating">
