@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -13,10 +14,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstraplanding.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstraplanding.min.css' %}" rel="stylesheet">
 
     <!-- Material Design Bootstrap -->
-    <link href="../static/css/mdblanding.min.css" rel="stylesheet">
+    <link href="{% static 'css/mdblanding.min.css' %}" rel="stylesheet">
 
     <!-- Template styles -->
     <style>
@@ -115,8 +116,8 @@
                     <p class="wow fadeInDown">Learn, by sharing.</p>
                 </li>
                 <li>
-                    <a href="#" class="btn btn-primary btn-lg wow fadeInLeft" data-wow-delay="0.2s" rel="nofollow">Sign up!</a>
-                    <a href="#" class="btn btn-default btn-lg wow fadeInRight" data-wow-delay="0.2s" rel="nofollow">Login</a>
+                    <a href="{% url 'signup'%}" class="btn btn-primary btn-lg wow fadeInLeft" data-wow-delay="0.2s" rel="nofollow">Sign up!</a>
+                    <a href="{% url 'login'%}" class="btn btn-default btn-lg wow fadeInRight" data-wow-delay="0.2s" rel="nofollow">Login</a>
                 </li>
             </ul>
         </div>
@@ -250,16 +251,16 @@
     <!-- SCRIPTS -->
 
     <!-- JQuery -->
-    <script type="text/javascript" src="../static/js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
 
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="../static/js/tether.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/tether.min.js' %}"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="../static/js/mdb.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
 
     <!--Google Maps-->
     <script src="http://maps.google.com/maps/api/js"></script>

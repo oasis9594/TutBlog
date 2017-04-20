@@ -7,6 +7,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)#About Me
     birth_date = models.DateField(null=True, blank=True)
+    email_confirmed = models.BooleanField(default=False)
     contribution = models.IntegerField(default=0)
     organization = models.CharField(max_length=200, null=True, blank=True)
     facebook_url = models.URLField(max_length=200, null=True, blank=True)
