@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
-from User.forms import SignUpForm
+from User.forms import SignUpForm, UserForm, ProfileForm
 from django.contrib.auth import login
 from django.core.mail import send_mail
 from django.utils.encoding import force_bytes, force_text
@@ -21,8 +21,23 @@ def dashboard(request):
 def myblogs(request):
 	return render(request,"myblogs.html")
 @login_required(login_url="login/")
-def user(request):
-	return render(request,"user.html")
+def profile(request):
+	if request.method == 'POST':
+		user_form = UserForm(request.POST, instance=request.user)
+		profile_form = ProfileForm(request.POST, instance=request.user.profile)
+		if user_form.is_valid():
+			user_form.save()
+			if profile_form.is_valid():
+				profile_form.save()
+				return redirect('user')
+	else:
+		user_form = UserForm(instance=request.user)
+		profile_form = ProfileForm(instance=request.user.profile)
+	return render(request,"user.html", {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
+
 @login_required(login_url="login/")
 def notifications(request):
 	return render(request,"notifications.html")

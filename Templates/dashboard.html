@@ -121,6 +121,11 @@
 						<h3>
 							Welcome {{ user.username }}!
 						</h3>
+						{% if user.profile.bio %}
+						<h5>
+							{{ user.profile.bio }}
+						</h5>
+						{% endif %}
 						<hr/>
 					</div>
 					<div class="row">
