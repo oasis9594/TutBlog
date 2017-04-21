@@ -1,6 +1,8 @@
 <!doctype html>
+{% load cropping %}
 <html lang="en">
 <head>
+	{{ profile_form.media }}
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../static/material-dashboard/img/apple-icon.png" />
 	<link rel="icon" type="image/png" href="../static/material-dashboard/img/favicon.png" />
@@ -135,12 +137,13 @@
 											<div class="col-sm-2 col-sm-offset-3 col-xs-6 col-xs-offset-1">
 												<!--<input id="fileUpload" type="file" onChange="readURL(this);">-->
 												{{profile_form.profile_image}}
+												{{profile_form.cropping}}
 												<div class="row" >
 													<div class="col-xs-12" id="image-holder">
 
 														<div class="ih-item circle effect19"><a href="#">
 															<div class="spinner"></div>
-															<div class="img"><img id="my-image" class="img-responsive" src="{{user.profile.image_url}}" alt="img"></div>
+															<div class="img"><img id="my-image" class="img-responsive" src="{% cropped_thumbnail user.profile "cropping" scale=0.5 %}" alt="img"></div>
 															<div class="info">
 																<div class="info-back">
 																	<h3><i class="fa fa-camera" style="font-size:50px;"></i></h3>

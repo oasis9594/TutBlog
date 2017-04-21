@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+from easy_thumbnails.conf import settings as thumbnail_settings
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -40,8 +40,16 @@ INSTALLED_APPS = [
 
     #custom
     'User.apps.UserConfig',
-    'Blogs.apps.BlogsConfig'
+    'Blogs.apps.BlogsConfig',
+
+    #from github
+    'easy_thumbnails',
+    'image_cropping',
 ]
+
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

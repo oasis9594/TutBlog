@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from image_cropping import ImageRatioField
 import os
 # Create your models here.
 def get_image_path(instance, filename):
@@ -10,6 +11,7 @@ def get_image_path(instance, filename):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    cropping = ImageRatioField('profile_image', '700x700', size_warning=True)
     bio = models.TextField(max_length=500, blank=True, null=True)
     birth_date = models.DateField(null=True, blank=True)
     email_confirmed = models.BooleanField(default=False)
