@@ -1,0 +1,19 @@
+main {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+.widget-wrapper {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid purple;
+    margin-bottom: 2rem;
+}
+
+.navbar {
+    background-color: #9425A7;
+}
+
+footer.page-footer {
+    background-color: #9425A7;
+    margin-top: 2rem;
+}

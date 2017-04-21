@@ -34,8 +34,60 @@ def blog_index(request):
 		blogs = paginator.page(1)
 	except EmptyPage:
 		blogs = paginator.page(paginator.num_pages)
-	return render(request, "blog.html", { 'blogs': blogs })
+	return render(request, "blog_list.html", { 'blogs': blogs })
 
+def popular(request):
+	blog_list = Blog.objects.order_by('-votes')
+	page = request.GET.get('page', 1)
+
+	paginator = Paginator(blog_list, 5)
+	try:
+		blogs = paginator.page(page)
+	except PageNotAnInteger:
+		blogs = paginator.page(1)
+	except EmptyPage:
+		blogs = paginator.page(paginator.num_pages)
+	return render(request, "blog_list.html", { 'blogs': blogs })
+
+def recent(request):
+	blog_list = Blog.objects.order_by('-updated')
+	page = request.GET.get('page', 1)
+
+	paginator = Paginator(blog_list, 5)
+	try:
+		blogs = paginator.page(page)
+	except PageNotAnInteger:
+		blogs = paginator.page(1)
+	except EmptyPage:
+		blogs = paginator.page(paginator.num_pages)
+	return render(request, "blog_list.html", { 'blogs': blogs })
+
+def data_structures(request):
+	blog_list = Blog.objects.filter(category__in=[1])
+	page = request.GET.get('page', 1)
+
+	paginator = Paginator(blog_list, 5)
+	try:
+		blogs = paginator.page(page)
+	except PageNotAnInteger:
+		blogs = paginator.page(1)
+	except EmptyPage:
+		blogs = paginator.page(paginator.num_pages)
+	return render(request, "blog_list.html", { 'blogs': blogs })
+
+def algorithms(request):
+	blog_list = Blog.objects.filter(category__in=[2])
+	page = request.GET.get('page', 1)
+
+	paginator = Paginator(blog_list, 5)
+	try:
+		blogs = paginator.page(page)
+	except PageNotAnInteger:
+		blogs = paginator.page(1)
+	except EmptyPage:
+		blogs = paginator.page(paginator.num_pages)
+	return render(request, "blog_list.html", { 'blogs': blogs })
+	
 class BlogDetail(generic.DetailView):
     model = Blog
     template_name = 'blog_detail.html'

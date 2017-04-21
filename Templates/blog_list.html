@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,39 +14,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Material Design Bootstrap -->
-    <link href="../static/css/mdb.min.css" rel="stylesheet">
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
 
-    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
     <!-- Template styles -->
-    <style rel="stylesheet">
-        /* TEMPLATE STYLES */
-
-        main {
-            padding-top: 3rem;
-            padding-bottom: 2rem;
-        }
-
-        .widget-wrapper {
-            padding-bottom: 2rem;
-            border-bottom: 1px solid purple;
-            margin-bottom: 2rem;
-        }
-
-
-        .navbar {
-            background-color: #9425A7;
-        }
-
-        footer.page-footer {
-            background-color: #9425A7;
-            margin-top: 2rem;
-
-        }
-    </style>
+    <link href="{% static 'css/blog_list.css' %}" rel="stylesheet">
 
 </head>
 
@@ -166,11 +143,11 @@
                         <h4>Categories:</h4>
                         <br>
                         <div class="list-group">
-                            <a href="#" class="list-group-item active">Lifestyle</a>
-                            <a href="#" class="list-group-item">Music</a>
-                            <a href="#" class="list-group-item">Travels</a>
-                            <a href="#" class="list-group-item">Fashion</a>
-                            <a href="#" class="list-group-item">Parties</a>
+                            <a href="{% url 'blog_index'%}" class="list-group-item active">All</a>
+                            <a href="{% url 'popular'%}" class="list-group-item">Popular</a>
+                            <a href="{% url 'recent'%}" class="list-group-item">Recent</a>
+                            <a href="{% url 'data_structures'%}" class="list-group-item">Data Structures</a>
+                            <a href="{% url 'algorithms'%}" class="list-group-item">Algorithms</a>
                         </div>
                     </div>
 
