@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm, Textarea
 from User.models import Profile
-
+from image_cropping import ImageCropWidget
 # If you don't do this you cannot use Bootstrap CSS
 class LoginForm(AuthenticationForm):
 	username = forms.CharField(label="Username", max_length=30,
@@ -39,7 +39,7 @@ class UserForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
 	profile_image = forms.ImageField(required=False, 
-		widget=forms.FileInput(attrs={'id':'fileUpload', 'onChange':'readURL(this);'}))
+		widget=ImageCropWidget(attrs={'id':'fileUpload', 'onChange':'readURL(this);'}))
 	mobile=forms.IntegerField(required=False, label="Mobile Number",
 		widget=forms.NumberInput(attrs={'class': 'form-control', 'name': 'mobile'}))
 	city = forms.CharField(required=False, label="City", max_length=30,
@@ -50,5 +50,5 @@ class ProfileForm(forms.ModelForm):
 		widget=forms.Textarea(attrs={'class': 'form-control', 'name': 'bio', 'rows': '2'}))
 	class Meta:
 		model = Profile
-		fields = ('profile_image','mobile', 'city', 'country', 'bio')
+		fields = ('profile_image','cropping', 'mobile', 'city', 'country', 'bio')
 		
