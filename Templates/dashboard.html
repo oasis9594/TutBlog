@@ -36,13 +36,13 @@
 			<div class="sidebar-wrapper">
 				<ul class="nav">
 					<li class="active">
-						<a href="dashboard.html">
+						<a href="{% url 'dashboard'%}">
 							<i class="material-icons">dashboard</i>
 							<p>Dashboard</p>
 						</a>
 					</li>
 					<li>
-						<a href="user.html">
+						<a href="{% url 'user'%}">
 							<i class="material-icons">person</i>
 							<p>User Profile</p>
 						</a>
@@ -54,13 +54,13 @@
 						</a>
 					</li>
 					<li>
-						<a href="notifications.html">
+						<a href="{% url 'notifications'%}">
 							<i class="material-icons text-gray">notifications</i>
 							<p>Notifications</p>
 						</a>
 					</li>
 					<li>
-						<a href="myblogs.html">
+						<a href="{% url 'myblogs'%}">
 							<i class="material-icons">assignment</i>
 							<p>My Blogs</p>
 						</a>
@@ -117,6 +117,17 @@
 
 			<div class="content">
 				<div class="container-fluid">
+					<div class="row">
+						<h3>
+							Welcome {{ user.username }}!
+						</h3>
+						{% if user.profile.bio %}
+						<h5>
+							{{ user.profile.bio }}
+						</h5>
+						{% endif %}
+						<hr/>
+					</div>
 					<div class="row">
 						<h3>
 							Badges

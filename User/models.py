@@ -2,11 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import os
 # Create your models here.
+def get_image_path(instance, filename):
+    return os.path.join('user', str(instance.id), filename)
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)#About Me
+    profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    bio = models.TextField(max_length=500, blank=True, null=True)
     birth_date = models.DateField(null=True, blank=True)
+    email_confirmed = models.BooleanField(default=False)
     contribution = models.IntegerField(default=0)
     organization = models.CharField(max_length=200, null=True, blank=True)
     facebook_url = models.URLField(max_length=200, null=True, blank=True)
@@ -16,6 +22,16 @@ class Profile(models.Model):
     mobile = models.BigIntegerField(null = True, blank = True)
     relationships = models.ManyToManyField('self', through='Relationship', symmetrical=False, 
     	related_name='related_to')
+    def image_url(self):
+        """
+        Returns the URL of the image associated with this Object.
+        If an image hasn't been uploaded yet, it returns a stock image
+        :returns: str -- the image url
+        """
+        if self.profile_image and hasattr(self.profile_image, 'url'):
+            return self.profile_image.url
+        else:
+            return '../static/material-dashboard/img/faces/marc.jpg'
 
     def __str__(self):              # __unicode__ on Python 2
         return "%s" % (self.user.username)
