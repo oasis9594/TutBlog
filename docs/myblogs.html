@@ -122,26 +122,57 @@
 						<hr/>
 					</div>
 					<div class="row">
-						{% for blog in blogs %}
 						<div class="col-sm-4">
 							<div class="card">
 								<div class="card-header" data-background-color="purple">
-									<h4 class="title">{{ blog.title }}</h4>
+									<h4 class="title">Blog Title</h4>
 								</div>
 								<div class="card-content">
-									<p>{{ blog.body|safe|truncatewords:"20"|linebreaks }}</p>
-									<form action="{% url 'blog_detail' blog.id %}"><button class="btn btn-primary pull-right" type="button" name="button">Read More</button></form>
+									<p>This is the blog description.It can be anything...</p>
+									<button class="btn btn-primary pull-right" type="button" name="button">Read More</button>
 								</div>
 							</div>
 						</div>
-						{% endfor %}
+						<div class="col-sm-4">
+							<div class="card">
+								<div class="card-header" data-background-color="purple">
+									<h4 class="title">Blog Title</h4>
+								</div>
+								<div class="card-content">
+									<p>This is the blog description.It can be anything...</p>
+									<button class="btn btn-primary pull-right" type="button" name="button">Read More</button>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card">
+								<div class="card-header" data-background-color="purple">
+									<h4 class="title">Blog Title</h4>
+								</div>
+								<div class="card-content">
+									<p>This is the blog description.It can be anything...</p>
+									<button class="btn btn-primary pull-right" type="button" name="button">Read More</button>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card">
+								<div class="card-header" data-background-color="purple">
+									<h4 class="title">Blog Title</h4>
+								</div>
+								<div class="card-content">
+									<p>This is the blog description.It can be anything...</p>
+									<button class="btn btn-primary pull-right" type="button" name="button">Read More</button>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="row">
 						<h3>Create a New Blog</h3>
 						<hr/>
 					</div>
 					<div class="">
-						<form action="{% url 'create_blog' %}"><button class="btn btn-primary" type="button" name="button">Create</button></form>
+						<button class="btn btn-primary" type="button" name="button">Create</button>
 					</div>
 				</div>
 			</div>

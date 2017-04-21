@@ -26,7 +26,7 @@ def create_blog(request):
 def blog_index(request):
 	blog_list = Blog.objects.all()
 	page = request.GET.get('page', 1)
-
+	x=1
 	paginator = Paginator(blog_list, 5)
 	try:
 		blogs = paginator.page(page)
@@ -34,12 +34,12 @@ def blog_index(request):
 		blogs = paginator.page(1)
 	except EmptyPage:
 		blogs = paginator.page(paginator.num_pages)
-	return render(request, "blog_list.html", { 'blogs': blogs })
+	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 
 def popular(request):
 	blog_list = Blog.objects.order_by('-votes')
 	page = request.GET.get('page', 1)
-
+	x=2
 	paginator = Paginator(blog_list, 5)
 	try:
 		blogs = paginator.page(page)
@@ -47,12 +47,12 @@ def popular(request):
 		blogs = paginator.page(1)
 	except EmptyPage:
 		blogs = paginator.page(paginator.num_pages)
-	return render(request, "blog_list.html", { 'blogs': blogs })
+	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 
 def recent(request):
 	blog_list = Blog.objects.order_by('-updated')
 	page = request.GET.get('page', 1)
-
+	x=3
 	paginator = Paginator(blog_list, 5)
 	try:
 		blogs = paginator.page(page)
@@ -60,12 +60,12 @@ def recent(request):
 		blogs = paginator.page(1)
 	except EmptyPage:
 		blogs = paginator.page(paginator.num_pages)
-	return render(request, "blog_list.html", { 'blogs': blogs })
+	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 
 def data_structures(request):
 	blog_list = Blog.objects.filter(category__in=[1])
 	page = request.GET.get('page', 1)
-
+	x=4
 	paginator = Paginator(blog_list, 5)
 	try:
 		blogs = paginator.page(page)
@@ -73,12 +73,12 @@ def data_structures(request):
 		blogs = paginator.page(1)
 	except EmptyPage:
 		blogs = paginator.page(paginator.num_pages)
-	return render(request, "blog_list.html", { 'blogs': blogs })
+	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 
 def algorithms(request):
 	blog_list = Blog.objects.filter(category__in=[2])
 	page = request.GET.get('page', 1)
-
+	x=5
 	paginator = Paginator(blog_list, 5)
 	try:
 		blogs = paginator.page(page)
@@ -86,7 +86,7 @@ def algorithms(request):
 		blogs = paginator.page(1)
 	except EmptyPage:
 		blogs = paginator.page(paginator.num_pages)
-	return render(request, "blog_list.html", { 'blogs': blogs })
+	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 	
 class BlogDetail(generic.DetailView):
     model = Blog

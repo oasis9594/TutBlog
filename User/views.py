@@ -19,7 +19,9 @@ def dashboard(request):
 	return render(request,"dashboard.html")
 @login_required(login_url="login/")
 def myblogs(request):
-	return render(request,"myblogs.html")
+	user=request.user
+	blogs=user.blog_set.all()
+	return render(request,"myblogs.html", { 'blogs': blogs })
 @login_required(login_url="login/")
 def profile(request):
 	if request.method == 'POST':

@@ -143,11 +143,31 @@
                         <h4>Categories:</h4>
                         <br>
                         <div class="list-group">
-                            <a href="{% url 'blog_index'%}" class="list-group-item active">All</a>
-                            <a href="{% url 'popular'%}" class="list-group-item">Popular</a>
-                            <a href="{% url 'recent'%}" class="list-group-item">Recent</a>
-                            <a href="{% url 'data_structures'%}" class="list-group-item">Data Structures</a>
-                            <a href="{% url 'algorithms'%}" class="list-group-item">Algorithms</a>
+                            {% if x == 1 %}
+                                <a href="{% url 'blog_index'%}" class="list-group-item active">All</a>
+                            {% else %}
+                                <a href="{% url 'blog_index'%}" class="list-group-item">All</a>
+                            {% endif %}
+                            {% if x == 2 %}
+                                <a href="{% url 'popular'%}" class="list-group-item active">Popular</a>
+                            {% else %}
+                                <a href="{% url 'popular'%}" class="list-group-item">Popular</a>
+                            {% endif %}
+                            {% if x == 3 %}
+                                <a href="{% url 'recent'%}" class="list-group-item active">Recent</a>
+                            {% else %}
+                                <a href="{% url 'recent'%}" class="list-group-item">Recent</a>
+                            {% endif %}
+                            {% if x == 4 %}
+                                <a href="{% url 'data_structures'%}" class="list-group-item active">Data Structures</a>
+                            {% else %}
+                                <a href="{% url 'data_structures'%}" class="list-group-item">Data Structures</a>
+                            {% endif %}
+                            {% if x == 5 %}
+                                <a href="{% url 'algorithms'%}" class="list-group-item active">Algorithms</a>
+                            {% else %}
+                                <a href="{% url 'algorithms'%}" class="list-group-item">Algorithms</a>
+                            {% endif %}
                         </div>
                     </div>
 
