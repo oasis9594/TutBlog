@@ -26,8 +26,6 @@
 </head>
 
 <body>
-
-
   <header>
 
     <!--Navbar-->
@@ -93,8 +91,13 @@
             <p>{{ blog.body|safe }}</p>
 
             <!--Upvote and downvote button-->
-            <button class="btn green"><i class="fa fa-thumbs-up"></i>  Upvote</button>
-            <button class="btn red"><i class="fa fa-thumbs-down"></i>  Downvote</button>
+            <form action="{% url 'vote' blog.id %}" method="post">
+              {% csrf_token %}
+              <button class="btn green" type="submit" name="vote" value="up"><i class="fa fa-thumbs-up"></i>  Upvote</button>
+              <button class="btn red" type="submit" name="vote" value="down"><i class="fa fa-thumbs-down"></i>  Downvote</button>
+            </form>
+            <br>
+            Vote Count: {{ blog.total_votes  }} <!--yeh part edit kara hai bas maine-->
 
           </div>
           <!--/.Post-->
@@ -118,30 +121,30 @@
           <div class="Comments">
             <div id="commentid">
               <div class="media">
-					      <div class="media-left">
-					        <a href="#">
-					        	<img src="http://placehold.it/64x64" alt="">
-					        </a>
-					      </div>
-					      <div class="media-body">
-					        <h4 class="media-heading">Joseph Goh <small>August 25, 2014 at 9:30 PM</small></h4>
-					        <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs .  </p>
-					      </div>
-					    </div>
+                <div class="media-left">
+                  <a href="#">
+                    <img src="http://placehold.it/64x64" alt="">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Joseph Goh <small>August 25, 2014 at 9:30 PM</small></h4>
+                  <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs .  </p>
+                </div>
+              </div>
             </div>
             <hr/>
             <div id="commentid">
               <div class="media">
-					      <div class="media-left">
-					        <a href="#">
-					        	<img src="http://placehold.it/64x64" alt="">
-					        </a>
-					      </div>
-					      <div class="media-body">
-					        <h4 class="media-heading">Joseph Goh <small>August 25, 2014 at 9:30 PM</small></h4>
-					        <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs .  </p>
-					      </div>
-					    </div>
+                <div class="media-left">
+                  <a href="#">
+                    <img src="http://placehold.it/64x64" alt="">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Joseph Goh <small>August 25, 2014 at 9:30 PM</small></h4>
+                  <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs .  </p>
+                </div>
+              </div>
             </div>
             <hr/>
           </div>

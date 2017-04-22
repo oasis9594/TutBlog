@@ -1,0 +1,55 @@
+<main>
+
+    <!--Main layout-->
+    <div class="container">
+        <div class="row">
+
+            <!--Main column-->
+            <div class="col-lg-12">
+
+                <!--Post-->
+                <div class="post-wrapper">
+                    <!--Post data-->
+                    <h1 class="h1-responsive">{{ blog.title }} <!--<small class="text-muted">Secondary text</small>--></h1>
+                    <h5>Written by <a href="" style="color: purple;">{{ blog.author }}</a>, {{ blog.updated|date:"D d M Y" }}</h5>
+
+                    <br>
+
+                    <!--Featured image -->
+
+
+                    <!--Post excerpt-->
+                    <p>{{ blog.body|safe }}</p>
+
+                    <!--Upvote and downvote button-->
+                <form action="{% url 'vote' blog.id %}" method="post">
+                  {% csrf_token %}
+                    <button class="btn green" type="submit" name="vote" value="up"><i class="fa fa-thumbs-up"></i>  Upvote</button>
+                    <button class="btn red" type="submit" name="vote" value="down"><i class="fa fa-thumbs-down"></i>  Downvote</button>
+                </form>
+                    <br>
+                    Vote Count: {{ blog.total_votes  }} <!--yeh part edit kara hai bas maine-->
+                </div>
+                <!--/.Post-->
+
+                <hr>
+                <!--Take user commment-->
+                {% if user.is_authenticated %}
+                <form method="post">
+                  {% csrf_token %}
+                  <div class="md-form">
+          <label>{{ form.text.label }}</label>
+  						{{ form.text }}
+        </div>
+        <button class="btn blue" type="submit"><i class="fa fa-commenting"></i> Comment </button>
+      </form>
+      <hr>
+      {% endif %}
+      <!--User comment taken-->
+      <h1 class="h1-responsive">Comments</h1>
+
+
+            </div>
+
+
+        </div>

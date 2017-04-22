@@ -7,7 +7,7 @@ from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
-@login_required(login_url="login/")
+@login_required(login_url="/login/")
 def create_blog(request):
 	if request.method == 'POST':
 		form = BlogForm(request.POST, request.FILES)
@@ -104,3 +104,31 @@ def blog_detail(request, blog_id):
 	return render(request,"blog_detail.html", {
         'form': form,'blog': blog,
     })
+
+@login_required(login_url="/login/")
+def vote(request, blog_id):
+	blog=Blog.objects.get(pk=blog_id)
+	user = request.user
+	vote_val = request.POST.get("vote", "")
+	
+	if vote_val == 'up':
+		if blog.upvotes.filter(id=user.id).exists():
+			blog.upvotes.remove(user)
+		else:
+			if blog.downvotes.filter(id=user.id).exists():
+				blog.downvotes.remove(user)
+			blog.upvotes.add(user)
+	else:
+		if blog.downvotes.filter(id=user.id).exists():
+			blog.downvotes.remove(user)
+		else:
+			if blog.upvotes.filter(id=user.id).exists():
+				blog.upvotes.remove(user)
+			blog.downvotes.add(user)
+	user.profile.contribution -= blog.total_votes
+	blog.total_votes = blog.upvotes.count() - blog.downvotes.count()
+	user.profile.contribution += blog.total_votes
+	blog.save()
+	return redirect('blog_detail', blog_id)
+
+

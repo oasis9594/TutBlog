@@ -29,7 +29,9 @@ class Blog(models.Model):
 	updated = models.DateTimeField(db_index=True, auto_now=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	tags = models.ManyToManyField(Tags, blank = True)
-	votes = models.IntegerField(default=0)
+	upvotes = models.ManyToManyField(User, related_name='blog_upvotes')
+	downvotes = models.ManyToManyField(User, related_name='blog_downvotes')
+	total_votes = models.IntegerField(default = 0)
 
 	def __str__(self):
 		return self.title
