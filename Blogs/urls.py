@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^category/data-structures/$', views.data_structures, name='data_structures'),
     url(r'^category/algorithms/$', views.algorithms, name='algorithms'),
     url(r'^(?P<blog_id>[0-9]+)/$', views.blog_detail, name='blog_detail'),
+    url(r'^(?P<blog_id>[0-9]+)/vote/$', views.vote, name='vote'),
 ]

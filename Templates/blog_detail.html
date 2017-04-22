@@ -93,9 +93,13 @@
                         <p>{{ blog.body|safe }}</p>
 
                         <!--Upvote and downvote button-->
-                        <button class="btn green"><i class="fa fa-thumbs-up"></i>  Upvote</button>
-                        <button class="btn red"><i class="fa fa-thumbs-down"></i>  Downvote</button>
-                        
+                    <form action="{% url 'vote' blog.id %}" method="post">
+                    	{% csrf_token %}
+                        <button class="btn green" type="submit" name="vote" value="up"><i class="fa fa-thumbs-up"></i>  Upvote</button>
+                        <button class="btn red" type="submit" name="vote" value="down"><i class="fa fa-thumbs-down"></i>  Downvote</button>
+                    </form>
+                        <br> 
+                        Vote Count: {{ blog.total_votes  }} 
                     </div>
                     <!--/.Post-->
 
