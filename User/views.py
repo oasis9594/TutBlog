@@ -14,15 +14,15 @@ from User.tokens import account_activation_token
 # Create your views here.
 # this login required decorator is to not allow to any  
 # view without authenticating
-@login_required(login_url="login/")
+@login_required(login_url="/login/")
 def dashboard(request):
 	return render(request,"dashboard.html")
-@login_required(login_url="login/")
+@login_required(login_url="/login/")
 def myblogs(request):
 	user=request.user
 	blogs=user.blog_set.all()
 	return render(request,"myblogs.html", { 'blogs': blogs })
-@login_required(login_url="login/")
+@login_required(login_url="/login/")
 def profile(request):
 	if request.method == 'POST':
 		user_form = UserForm(request.POST, instance=request.user)
@@ -40,7 +40,7 @@ def profile(request):
         'profile_form': profile_form
     })
 
-@login_required(login_url="login/")
+@login_required(login_url="/login/")
 def notifications(request):
 	return render(request,"notifications.html")
 def home(request):
