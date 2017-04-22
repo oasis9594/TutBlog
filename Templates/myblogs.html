@@ -130,7 +130,7 @@
 								</div>
 								<div class="card-content">
 									<p>{{ blog.body|safe|truncatewords:"20"|linebreaks }}</p>
-									<form action="{% url 'blog_detail' blog.id %}"><button class="btn btn-primary pull-right" type="button" name="button">Read More</button></form>
+									<form action="{% url 'blog_detail' blog.id %}"><button class="btn btn-primary pull-right" type="submit" name="button">Read More</button></form>
 								</div>
 							</div>
 						</div>
@@ -141,7 +141,7 @@
 						<hr/>
 					</div>
 					<div class="">
-						<form action="{% url 'create_blog' %}"><button class="btn btn-primary" type="button" name="button">Create</button></form>
+						<form action="{% url 'create_blog' %}"><button class="btn btn-primary" type="submit" name="button">Create</button></form>
 					</div>
 				</div>
 			</div>

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from Blogs.models import Blog
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from Blogs.forms import BlogForm
+from Blogs.forms import BlogForm, CommentForm
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -88,6 +88,19 @@ def algorithms(request):
 		blogs = paginator.page(paginator.num_pages)
 	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 	
-class BlogDetail(generic.DetailView):
-    model = Blog
-    template_name = 'blog_detail.html'
+def blog_detail(request, blog_id):
+	blog=Blog.objects.get(pk=blog_id)
+	if request.method == 'POST':
+		form = CommentForm(request.POST)
+		if(form.is_valid()):
+			instance = form.save(commit=False)
+			instance.user = request.user
+			instance.blog=blog
+			instance.save()
+			return redirect('blog_detail', blog_id)
+	else:
+		form=CommentForm()
+
+	return render(request,"blog_detail.html", {
+        'form': form,'blog': blog,
+    })

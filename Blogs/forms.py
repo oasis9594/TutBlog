@@ -1,5 +1,5 @@
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
-from Blogs.models import Blog, Category, Tags
+from Blogs.models import Blog, Category, Tags, Comment
 from django import forms
 from django.forms import ModelForm
 class BlogForm(forms.ModelForm):
@@ -13,3 +13,10 @@ class BlogForm(forms.ModelForm):
 	class Meta:
 		model = Blog
 		fields = ('title', 'category', 'tags', 'body')
+
+class CommentForm(forms.ModelForm):
+	text = forms.CharField(label="Have something to say about this article?",
+		widget=forms.Textarea(attrs={'class': 'md-textarea', 'name': 'comment', 'id': 'comment'}))
+	class Meta:
+		model = Comment
+		fields = ('text',)		
