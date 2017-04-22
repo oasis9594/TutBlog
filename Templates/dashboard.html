@@ -79,7 +79,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a  class="navbar-brand" href="#"><h4>Dashboard</h4></a>
+						<a  class="navbar-brand" href="#"><h4>Welcome {{ user.username }}!</h4></a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -117,17 +117,6 @@
 
 			<div class="content">
 				<div class="container-fluid">
-					<div class="row">
-						<h3>
-							Welcome {{ user.username }}!
-						</h3>
-						{% if user.profile.bio %}
-						<h5>
-							{{ user.profile.bio }}
-						</h5>
-						{% endif %}
-						<hr/>
-					</div>
 					<div class="row">
 						<h3>
 							Badges
