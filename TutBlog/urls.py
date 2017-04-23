@@ -19,13 +19,18 @@ from django.contrib import admin
 from User.forms import LoginForm
 from django.contrib.auth import views
 from django.conf.urls.static import static
-
+from Blogs import views as T_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', views.login, {'template_name': 'login.html', 'authentication_form': LoginForm}, name='login'),
     url(r'^logout/$', views.logout, {'next_page': '/login'}),
     url(r'^summernote/', include('django_summernote.urls')),
     url(r'^blogs/', include('Blogs.urls')),
+    url(r'^tutorials/data-structures/$', T_views.tut_ds, name='tut_ds'),
+    url(r'^tutorials/algorithms/$', T_views.tut_algo, name='tut_algo'),
+    url(r'^tutorials/web-development/$', T_views.tut_webd, name='tut_webd'),
+    url(r'^tutorials/create/$', T_views.tut_create, name='tut_create'),
+    url(r'^tutorials/(?P<blog_id>[0-9]+)/$', T_views.tut_detail, name='tut_detail'),
     url(r'', include('User.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:

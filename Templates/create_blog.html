@@ -83,7 +83,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a  class="navbar-brand" href="#"><h4>Create Blog</h4></a>
+						<a  class="navbar-brand" href="#"><h4>{% if x == 1 %}Create Blog{% else %}Create Tutorial{% endif %}</h4></a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -130,17 +130,26 @@
 											<div class="col-md-12">
 												<div class="form-group label-floating">
 													<label class="control-label">Title</label>
-													<input type="text" class="form-control" >
+													<div class="controls">{{ form.title }}</div>
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group label-floating">
-													<label>Category</label>
+													<label>Category(Select one or more)</label>
 													<p>
-														<input type="checkbox" name="Data Structures" value="data"/>Data Structures&nbsp
-														<input type="checkbox" name="Algorithms" value="algorithm"/>Algorithms
+
+														<div data-toggle="buttons"> 
+														{% for checkbox in form.category %}
+														    <label class="btn btn-primary">
+														    {{ checkbox.tag }} {{ checkbox.choice_label }}
+														    </label>
+														    &nbsp
+														{% endfor %}
+														</div>
+														<!--<input type="checkbox" name="Data Structures" value="data"/>Data Structures&nbsp
+														<input type="checkbox" name="Algorithms" value="algorithm"/>Algorithms-->
 													</p>
 												</div>
 											</div>
@@ -148,8 +157,16 @@
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group label-floating">
-													<label>Tags</label>
+													<label>Tags(Select 0 or more)</label>
 													<p>
+														<div data-toggle="buttons"> 
+														{% for checkbox in form.tags %}
+														    <label class="btn btn-primary">
+														    {{ checkbox.tag }} {{ checkbox.choice_label }}
+														    </label>
+														    &nbsp
+														{% endfor %}
+														<!--</div>
 														<input type="checkbox" name="Stack" value="tag1"/>Stack&nbsp
 														<input type="checkbox" name="Queue" value="tag2"/>Queue&nbsp
 														<input type="checkbox" name="Linked List" value="tag3"/>Linked List&nbsp
@@ -161,7 +178,7 @@
 														<input type="checkbox" name="Dynamic Programming" value="tag9"/>Dynamic Programming&nbsp
 														<input type="checkbox" name="graph" value="tag10"/>Graph&nbsp
 														<input type="checkbox" name="Math" value="tag11"/>Math&nbsp
-														<input type="checkbox" name="BitMask" value="tag12"/>BitMask&nbsp
+														<input type="checkbox" name="BitMask" value="tag12"/>BitMask&nbsp -->
 													</p>
 												</div>
 											</div>

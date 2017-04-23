@@ -24,6 +24,7 @@ class Blog(models.Model):
 	title = models.CharField(max_length=100, unique=True)
 	slug = models.SlugField(max_length=100, unique=True)
 	body = models.TextField()
+	isTut = models.BooleanField(default=False)
 	created = models.DateTimeField(db_index=True, auto_now_add=True)
 	category = models.ManyToManyField(Category)
 	updated = models.DateTimeField(db_index=True, auto_now=True)

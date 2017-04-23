@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load cropping %}
 {% load static %}
 <html lang="en">
 
@@ -119,34 +120,22 @@
           <h1 class="h1-responsive">Comments</h1>
           <hr/>
           <div class="Comments">
+            {% for comment in blog.comment_set.all %}
             <div id="commentid">
               <div class="media">
                 <div class="media-left">
                   <a href="#">
-                    <img src="http://placehold.it/64x64" alt="">
+                    <img src="{% cropped_thumbnail comment.user.profile "cropping" %}" alt="img" width='50px' height='50px'>
                   </a>
                 </div>
                 <div class="media-body">
-                  <h4 class="media-heading">Joseph Goh <small>August 25, 2014 at 9:30 PM</small></h4>
-                  <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs .  </p>
+                  <h4 class="media-heading">{{ comment.user.username }} <small>{{ comment.updated }}</small></h4>
+                  <p>{{ comment.text }}</p>
                 </div>
               </div>
             </div>
             <hr/>
-            <div id="commentid">
-              <div class="media">
-                <div class="media-left">
-                  <a href="#">
-                    <img src="http://placehold.it/64x64" alt="">
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Joseph Goh <small>August 25, 2014 at 9:30 PM</small></h4>
-                  <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs .  </p>
-                </div>
-              </div>
-            </div>
-            <hr/>
+            {% endfor %}
           </div>
         </div>
       </div>

@@ -40,36 +40,36 @@
 		</div>
 		<div class="sidebar-wrapper">
 			<ul class="nav">
-				<li>
-					<a href="dashboard.html">
-						<i class="material-icons">dashboard</i>
-						<p>Dashboard</p>
-					</a>
-				</li>
-				<li>
-					<a href="user.html">
-						<i class="material-icons">person</i>
-						<p>User Profile</p>
-					</a>
-				</li>
-				<li>
-					<a href="tutorial.html">
-						<i class="material-icons">content_paste</i>
-						<p>Tutorial List</p>
-					</a>
-				</li>
-				<li  class="active">
-					<a href="notifications.html">
-						<i class="material-icons text-gray">notifications</i>
-						<p>Notifications</p>
-					</a>
-				</li>
-				<li>
-					<a href="myblogs.html">
-						<i class="material-icons">assignment</i>
-						<p>My Blogs</p>
-					</a>
-				</li>
+				<li >
+						<a href="{% url 'dashboard'%}">
+							<i class="material-icons">dashboard</i>
+							<p>Dashboard</p>
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'user'%}">
+							<i class="material-icons">person</i>
+							<p>User Profile</p>
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'home'%}">
+							<i class="material-icons">content_paste</i>
+							<p>Tutorial List</p>
+						</a>
+					</li>
+					<li class="active">
+						<a href="{% url 'notifications'%}">
+							<i class="material-icons text-gray">notifications</i>
+							<p>Notifications</p>
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'myblogs'%}">
+							<i class="material-icons">assignment</i>
+							<p>My Blogs</p>
+						</a>
+					</li>
 			</ul>
 		</div>
 	</div>

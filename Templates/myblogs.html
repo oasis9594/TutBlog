@@ -38,32 +38,32 @@
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
-					<li>
-						<a href="dashboard.html">
+					<li >
+						<a href="{% url 'dashboard'%}">
 							<i class="material-icons">dashboard</i>
 							<p>Dashboard</p>
 						</a>
 					</li>
 					<li>
-						<a href="user.html">
+						<a href="{% url 'user'%}">
 							<i class="material-icons">person</i>
 							<p>User Profile</p>
 						</a>
 					</li>
 					<li>
-						<a href="tutorial.html">
+						<a href="{% url 'home'%}">
 							<i class="material-icons">content_paste</i>
 							<p>Tutorial List</p>
 						</a>
 					</li>
 					<li>
-						<a href="notifications.html">
+						<a href="{% url 'notifications'%}">
 							<i class="material-icons text-gray">notifications</i>
 							<p>Notifications</p>
 						</a>
 					</li>
 					<li class="active">
-						<a href="myblogs.html">
+						<a href="{% url 'myblogs'%}">
 							<i class="material-icons">assignment</i>
 							<p>My Blogs</p>
 						</a>
@@ -141,8 +141,17 @@
 						<hr/>
 					</div>
 					<div class="">
-						<form action="{% url 'create_blog' %}"><button class="btn btn-primary" type="submit" name="button">Create</button></form>
+						<form action="{% url 'create_blog' %}"><button class="btn btn-primary" type="submit" name="button">Create Blog</button></form>
 					</div>
+					{% if request.user.is_superuser %}
+					<div class="row">
+						<h3>Create a New Tutorial</h3>
+						<hr/>
+					</div>
+					<div class="">
+						<form action="{% url 'tut_create' %}"><button class="btn btn-primary" type="submit" name="button">Create Tutorial</button></form>
+					</div>
+					{% endif %}
 				</div>
 			</div>
 			<footer class="footer">
