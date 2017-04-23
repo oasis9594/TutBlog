@@ -26,7 +26,8 @@ def create_blog(request):
     })
 
 def blog_index(request):
-	blog_list = Blog.objects.all()
+	blog_list1 = Blog.objects.all()
+	blog_list = blog_list1.filter(isTut=False)
 	page = request.GET.get('page', 1)
 	x=1
 	paginator = Paginator(blog_list, 5)

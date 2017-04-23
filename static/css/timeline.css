@@ -14,7 +14,11 @@
         left: 50%;
         margin-left: -1.5px;
     }
-
+a, a:hover, a:active, a:focus, a:visited, a:link, a:link:active, a:visited:active{
+    text-decoration: none;
+    color: black;
+    outline: none;
+}
     .timeline > li {
         margin-bottom: 20px;
         position: relative;
