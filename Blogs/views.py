@@ -132,6 +132,7 @@ def vote(request, blog_id):
 	blog.total_votes = blog.upvotes.count() - blog.downvotes.count()
 	user.profile.contribution += blog.total_votes
 	blog.save()
+	user.save()
 	return redirect('blog_detail', blog_id)
 
 def tut_ds(request):

@@ -13,3 +13,7 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
+
+#fileUpload{
+	display: none;
+}

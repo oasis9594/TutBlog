@@ -8,7 +8,7 @@ class BlogForm(forms.ModelForm):
 	body=forms.CharField(widget=SummernoteWidget(attrs={'class': 'form-control', 'name': 'body'}))
 	category = forms.ModelMultipleChoiceField(label="Category", required=True, widget=forms.CheckboxSelectMultiple(
 		attrs={'class': 'form-control', 'name': 'category'}), queryset=Category.objects.all())
-	tags= forms.ModelMultipleChoiceField(label="Tags", widget=forms.CheckboxSelectMultiple(
+	tags= forms.ModelMultipleChoiceField(label="Tags", required=False ,widget=forms.CheckboxSelectMultiple(
 		attrs={'class': 'form-control', 'name': 'tags'}), queryset=Tags.objects.all())
 	class Meta:
 		model = Blog

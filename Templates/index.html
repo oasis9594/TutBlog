@@ -20,61 +20,8 @@
     <link href="{% static 'css/mdblanding.min.css' %}" rel="stylesheet">
 
     <!-- Template styles -->
-    <style>
-        /* TEMPLATE STYLES */
 
-        html,
-        body,
-        .view {
-            height: 100%;
-        }
-        /* Navigation*/
-
-        .navbar {
-            background-color: transparent;
-        }
-
-        .scrolling-navbar {
-            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            transition: background .5s ease-in-out, padding .5s ease-in-out;
-        }
-
-        .top-nav-collapse {
-            background-color: #3c4f74;
-        }
-
-        footer.page-footer {
-            background-color: #3c4f74;
-            margin-top: 2rem;
-        }
-
-        @media only screen and (max-width: 768px) {
-            .navbar {
-                background-color: #1C2331;
-            }
-        }
-        /*Call to action*/
-
-        .flex-center {
-            color: #fff;
-        }
-
-        .view {
-            background: url("http://mdbootstrap.com/img/Photos/Horizontal/Work/full page/img%20(2).jpg")no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-        /*Contact section*/
-
-        #contact .fa {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1C2331;
-        }
-    </style>
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
 
 </head>
 
@@ -92,11 +39,16 @@
             <div class="collapse navbar-collapse" id="navbarNav1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#best-features">Courses</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <form class="form-inline waves-effect waves-light">
                     <input class="form-control" type="text" placeholder="Search">
@@ -115,10 +67,12 @@
                 <li>
                     <p class="wow fadeInDown">Learn, by sharing.</p>
                 </li>
+                {% if user.is_authenticated is false %}
                 <li>
                     <a href="{% url 'signup'%}" class="btn btn-primary btn-lg wow fadeInLeft" data-wow-delay="0.2s" rel="nofollow">Sign up!</a>
                     <a href="{% url 'login'%}" class="btn btn-default btn-lg wow fadeInRight" data-wow-delay="0.2s" rel="nofollow">Login</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -144,7 +98,7 @@
                         <!--Card image-->
                         <div class="view overlay hm-white-slight">
                             <img src="http://www.businesscomputingworld.co.uk/wp-content/uploads/2015/11/Software-Algorithm.jpg" class="img-fluid" alt="">
-                            <a href="#">
+                            <a href="{% url 'tut_algo' %}">
                                 <div class="mask"></div>
                             </a>
                         </div>
@@ -173,7 +127,7 @@
                         <!--Card image-->
                         <div class="view overlay hm-white-slight">
                             <img src="http://www.tutorsonnet.com/images/datastructures.jpg" class="img-fluid" alt="">
-                            <a href="#">
+                            <a href="{% url 'tut_ds' %}">
                                 <div class="mask"></div>
                             </a>
                         </div>
@@ -202,7 +156,7 @@
                         <!--Card image-->
                         <div class="view overlay hm-white-slight">
                             <img src="http://celebsoft.com/images/th5.jpg" class="img-fluid" alt="">
-                            <a href="#">
+                            <a href="{% url 'tut_webd' %}">
                                 <div class="mask"></div>
                             </a>
                         </div>

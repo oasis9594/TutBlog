@@ -40,15 +40,17 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarNav1">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Features</a>
+              <a class="nav-link" href ="{% url 'blog_index' %}">Blogs</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link">Pricing</a>
+            {% if user.is_authenticated %}
+            <li class="nav-item" >
+              <a class="nav-link" href ="{% url 'dashboard' %}">Dashboard</a>
             </li>
+            {% endif %}
             <li class="nav-item dropdown btn-group">
               <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
               <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
@@ -163,16 +165,16 @@
   <!-- SCRIPTS -->
 
   <!-- JQuery -->
-  <script type="text/javascript" src="../assets/js/jquery-2.2.3.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
 
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="../assets/js/tether.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/tether.min.js' %}"></script>
 
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
 
 
 </body>

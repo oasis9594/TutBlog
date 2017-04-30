@@ -17,3 +17,8 @@ footer.page-footer {
     background-color: #9425A7;
     margin-top: 2rem;
 }
+pre{
+	background-color: #F0F0F0;
+	padding: 10px;
+	border-radius: 5px;
+}

@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -12,18 +13,18 @@
 	<meta name="viewport" content="width=device-width" />
 
 	<!-- Bootstrap core CSS     -->
-	<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
-	<!-- ihover CSS     -->
-	<link href="../static/ihover/css/ihover.min.css" rel="stylesheet" />
+	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
 
 	<!--  Material Dashboard CSS    -->
-	<link href="../static/material-dashboard/css/material-dashboard.css" rel="stylesheet"/>
+	<link href="{% static 'material-dashboard/css/material-dashboard.css' %}" rel="stylesheet"/>
 
-	<link href="../static/material-dashboard/css/dashboard.css" rel="stylesheet" />
+	<link href="{% static 'material-dashboard/css/dashboard.css' %}" rel="stylesheet" />
+
+	<!-- ihover CSS     -->
+	<link href="{% static 'ihover/css/ihover.min.css' %}" rel="stylesheet" />
 
 	<!--     Fonts and icons     -->
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
 </head>
@@ -32,7 +33,7 @@
 	<div class="wrapper">
 		<div class="sidebar" data-color="purple" data-image="../static/material-dashboard/img/sidebar-1.jpg">
 			<div class="logo">
-				<a href="#" class="simple-text">
+				<a href="{% url 'home' %}" class="simple-text">
 					Home
 				</a>
 			</div>
@@ -156,34 +157,29 @@
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul>
-							<li>
-								<a href="#">
-									Home
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Company
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Portfolio
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Blog
-								</a>
-							</li>
-						</ul>
-					</nav>
-					<p class="copyright pull-right">
-						&copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-					</p>
-				</div>
+						<nav class="pull-left">
+							<ul>
+								<li>
+									<a href="{% url 'home' %}">
+										Home
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Company
+									</a>
+								</li>
+								<li>
+									<a href="{% url 'blog_index' %}">
+										Blog
+									</a>
+								</li>
+							</ul>
+						</nav>
+						<p class="copyright pull-right">
+							&copy; <script>document.write(new Date().getFullYear())</script> TutBlog</a>
+						</p>
+					</div>
 			</footer>
 		</div>
 	</div>

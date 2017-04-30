@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -12,15 +13,15 @@
 	<meta name="viewport" content="width=device-width" />
 
 	<!-- Bootstrap core CSS     -->
-	<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
 
 	<!--  Material Dashboard CSS    -->
-	<link href="../static/material-dashboard/css/material-dashboard.css" rel="stylesheet"/>
+	<link href="{% static 'material-dashboard/css/material-dashboard.css' %}" rel="stylesheet"/>
 
-	<link href="../static/material-dashboard/css/dashboard.css" rel="stylesheet" />
+	<link href="{% static 'material-dashboard/css/dashboard.css' %}" rel="stylesheet" />
 
 	<!--     Fonts and icons     -->
-	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 </head>
 
@@ -29,38 +30,38 @@
 	<div class="wrapper">
 		<div class="sidebar" data-color="purple" data-image="../static/material-dashboard/img/sidebar-1.jpg">
 			<div class="logo">
-				<a href="#" class="simple-text">
+				<a href="{% url 'home' %}" class="simple-text">
 					Home
 				</a>
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
 					<li class="active">
-						<a href="{% url 'dashboard'%}">
+						<a href="{% url 'dashboard' %}">
 							<i class="material-icons">dashboard</i>
 							<p>Dashboard</p>
 						</a>
 					</li>
 					<li>
-						<a href="{% url 'user'%}">
+						<a href="{% url 'user' %}">
 							<i class="material-icons">person</i>
 							<p>User Profile</p>
 						</a>
 					</li>
 					<li>
-						<a href="tutorial.html">
+						<a href="{% url 'home' %}">
 							<i class="material-icons">content_paste</i>
 							<p>Tutorial List</p>
 						</a>
 					</li>
 					<li>
-						<a href="{% url 'notifications'%}">
+						<a href="{% url 'notifications' %}">
 							<i class="material-icons text-gray">notifications</i>
 							<p>Notifications</p>
 						</a>
 					</li>
 					<li>
-						<a href="{% url 'myblogs'%}">
+						<a href="{% url 'myblogs' %}">
 							<i class="material-icons">assignment</i>
 							<p>My Blogs</p>
 						</a>
@@ -119,11 +120,12 @@
 				<div class="container-fluid">
 					<div class="row">
 						<h3>
-							Badges
+							Badge
 						</h3>
 						<hr/>
 					</div>
 					<div class="row">
+						{% if user.contribution >= 3000 %}
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
 							<div class="card card-stats badge">
 								<div class="card-header circular" data-background-color="red">
@@ -131,17 +133,16 @@
 								</div>
 								<div class="card-content">
 									<p class="category">Points</p>
-									<h3 class="title">100</h3>
+									<h3 class="title">{{ user.profile.contribution }}</h3>
 									<p class="category">Badge</p>
-									<h3 class="title">Gold</h3>
+									<h3 class="title">Legendary Grandmaster</h3>
 								</div>
 								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
+									
 								</div>
 							</div>
 						</div>
+						{% elif user.contribution >= 1000 %}
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
 							<div class="card card-stats badge">
 								<div class="card-header circular" data-background-color="orange">
@@ -149,17 +150,16 @@
 								</div>
 								<div class="card-content">
 									<p class="category">Points</p>
-									<h3 class="title">100</h3>
+									<h3 class="title">{{ user.profile.contribution }}</h3>
 									<p class="category">Badge</p>
-								<h3 class="title">Gold</h3>
+								<h3 class="title">Grandmaster</h3>
 								</div>
 								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
+									
 								</div>
 							</div>
 						</div>
+						{% elif user.contribution >= 500 %}
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
 							<div class="card card-stats badge">
 								<div class="card-header circular" data-background-color="purple">
@@ -167,17 +167,16 @@
 								</div>
 								<div class="card-content">
 									<p class="category">Points</p>
-									<h3 class="title">100</h3>
+									<h3 class="title">{{ user.profile.contribution }}</h3>
 									<p class="category">Badge</p>
-									<h3 class="title">Gold</h3>
+									<h3 class="title">Master</h3>
 								</div>
 								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
+									
 								</div>
 							</div>
 						</div>
+						{% elif user.contribution >= 150 %}
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
 							<div class="card card-stats badge">
 								<div class="card-header circular" data-background-color="blue">
@@ -186,16 +185,15 @@
 								<div class="card-content">
 									<p class="category">Points</p>
 									<h3 class="title">100</h3>
-									<p class="category">Badge</p>
-									<h3 class="title">Gold</h3>
+									<p class="category">{{ user.profile.contribution }}</p>
+									<h3 class="title">Expert</h3>
 								</div>
 								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
+									
 								</div>
 							</div>
 						</div>
+						{% elif user.contribution >= 50 %}
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
 							<div class="card card-stats badge">
 								<div class="card-header circular" data-background-color="green">
@@ -203,17 +201,33 @@
 								</div>
 								<div class="card-content">
 									<p class="category">Points</p>
-									<h3 class="title">100</h3>
+									<h3 class="title">{{ user.profile.contribution }}</h3>
 									<p class="category">Badge</p>
-									<h3 class="title">Gold</h3>
+									<h3 class="title">Pupil</h3>
 								</div>
 								<div class="card-footer">
-									<div class="stats">
-										<i class="material-icons">local_offer</i> Tutorial_Name
-									</div>
+									
 								</div>
 							</div>
 						</div>
+						{% else %}
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
+							<div class="card card-stats badge">
+								<div class="card-header circular" data-background-color="grey">
+									<i class="material-icons">star</i>
+								</div>
+								<div class="card-content">
+									<p class="category">Points</p>
+									<h3 class="title">{{ user.profile.contribution }}</h3>
+									<p class="category">Badge</p>
+									<h3 class="title">Newbie</h3>
+								</div>
+								<div class="card-footer">
+									
+								</div>
+							</div>
+						</div>
+						{% endif %}
 					</div>
 					<div class="row">
 						<h3>
@@ -276,14 +290,14 @@
 
 
 	<!--   Core JS Files   -->
-	<script src="../static/jquery/jquery.min.js" type="text/javascript"></script>
-	<script src="../static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../static/material-dashboard/js/material.min.js" type="text/javascript"></script>
+	<script src="{% static 'jquery/jquery.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'material-dashboard/js/material.min.js' %}" type="text/javascript"></script>
 
 	<!--  Notifications Plugin    -->
-	<script src="../static/bootstrap/js/bootstrap-notify.js"></script>
+	<script src="{% static 'bootstrap/js/bootstrap-notify.js' %}"></script>
 
 	<!-- Material Dashboard javascript methods -->
-	<script src="../static/material-dashboard/js/material-dashboard.js"></script>
+	<script src="{% static 'material-dashboard/js/material-dashboard.js' %}"></script>
 
 	</html>
