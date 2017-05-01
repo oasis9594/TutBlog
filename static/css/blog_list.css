@@ -44,10 +44,10 @@ pre{
   }
 
   .hovercard .avatar img {
-    width: 150px;
-    height: 150px;
-    max-width: 150px;
-    max-height: 150px;
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -68,7 +68,7 @@ pre{
 
   .hovercard .info .desc {
     overflow: hidden;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
     color: #737373;
     text-overflow: ellipsis;

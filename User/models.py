@@ -24,6 +24,8 @@ class Profile(models.Model):
     mobile = models.BigIntegerField(null = True, blank = True)
     relationships = models.ManyToManyField('self', through='Relationship', symmetrical=False, 
     	related_name='related_to')
+    following_cnt=models.IntegerField(default=0)
+    follower_cnt=models.IntegerField(default=0)
     def image_url(self):
         """
         Returns the URL of the image associated with this Object.
@@ -84,7 +86,13 @@ def get_related_to(self, status):
         from_people__to_person=self)
 
 def get_following(self):
-	return self.get_relationships(RELATIONSHIP_FOLLOWING)
+	return get_relationships(self, RELATIONSHIP_FOLLOWING)
 
 def get_followers(self):
-	return self.get_related_to(RELATIONSHIP_FOLLOWING)
+	return get_related_to(self, RELATIONSHIP_FOLLOWING)
+
+def is_following(self, person):
+    return Relationship.objects.filter(
+        from_person=self,
+        to_person=person,
+        status=RELATIONSHIP_FOLLOWING).exists()

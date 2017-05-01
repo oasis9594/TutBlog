@@ -33,7 +33,7 @@
   <header>
 
     <!--Navbar-->
-    <nav class="navbar navbar-toggleable-md navbar-dark">
+    <nav class="navbar navbar-toggleable-md navbar-dark" style="background-color:black;">
       <div class="container">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -112,6 +112,7 @@
                 {% endif %}
               </div>
               <div class="desc">Points: {{ user.profile.contribution }}</div>
+              <div class="desc">Followed By: {{ user.profile.follower_cnt }}</div>
               <div class="desc">{{ user.profile.bio }}</div>
               <div class="desc">Email: {{ user.email }}</div>
             </div>
@@ -119,6 +120,19 @@
               <a class="btn btn-lg btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
               <a class="btn btn-lg btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
               <a class="btn btn-lg btn-twitter" href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div>
+              {% if request.user.is_authenticated and request.user != user %}
+              <form action="{% url 'follow' user.username %}">
+                <button class="btn btn-lg green" type="submit" name="button">
+                  {% if x == 0 %}
+                    Follow
+                  {% else %}
+                    Unfollow
+                  {% endif %}
+                </button>
+              </form>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -128,7 +142,7 @@
   </main>
 
   <!--Footer-->
-  <footer class="page-footer center-on-small-only">
+  <footer class="page-footer center-on-small-only" style="background-color:black;">
 
     <!--Copyright-->
     <div class="footer-copyright">

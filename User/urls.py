@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^user/$', views.profile, name='user'),
     url(r'^user/(?P<username>[\w.@+-]+)/$', views.profile_with_username, name='userprofile'),
+    url(r'^user/(?P<username>[\w.@+-]+)/follow/$', views.follow, name='follow'),
     url(r'^myblogs/$', views.myblogs, name='myblogs'),
     url(r'^notifications/$', views.notifications, name='notifications'),
     url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),

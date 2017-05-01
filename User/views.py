@@ -11,6 +11,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.models import User
 from User.tokens import account_activation_token
+from User.models import *
 # Create your views here.
 # this login required decorator is to not allow to any  
 # view without authenticating
@@ -42,9 +43,27 @@ def profile(request):
     })
 def profile_with_username(request, username):
 	user=User.objects.get(username=username)
+	x=0
+	if request.user.is_authenticated() and is_following(request.user.profile, user.profile ):
+		x=1
 	return render(request,"profile.html", {
         'user': user,
+        'x': x
     })
+@login_required(login_url="/login/")
+def follow(request, username):
+	u1=User.objects.get(username=username)
+	user_tofollow=u1.profile
+	user_following=request.user.profile
+	if is_following(user_following, user_tofollow):
+		remove_relationship(user_following, user_tofollow, RELATIONSHIP_FOLLOWING)
+	else:
+		add_relationship(user_following, user_tofollow, RELATIONSHIP_FOLLOWING)
+	user_tofollow.follower_cnt=get_followers(user_tofollow).count()
+	user_following.following_cnt=get_following(user_following).count()
+	user_following.save()
+	user_tofollow.save()
+	return redirect('userprofile', username)
 @login_required(login_url="/login/")
 def notifications(request):
 	return render(request,"notifications.html")
