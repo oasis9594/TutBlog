@@ -83,7 +83,7 @@
           <div class="post-wrapper">
             <!--Post data-->
             <h1 class="h1-responsive">{{ blog.title }} <!--<small class="text-muted">Secondary text</small>--></h1>
-            <h5>Written by <a href="" style="color: purple;">{{ blog.author }}</a>, {{ blog.updated|date:"D d M Y" }}</h5>
+            <h5>Written by <a href="{% url 'userprofile' blog.author.username %}" style="color: purple;">{{ blog.author }}</a>, {{ blog.updated|date:"D d M Y" }}</h5>
 
             <br>
 

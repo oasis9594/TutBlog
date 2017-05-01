@@ -39,7 +39,11 @@ def profile(request):
         'user_form': user_form,
         'profile_form': profile_form
     })
-
+def profile_with_username(request, username):
+	user=User.objects.get(username=username)
+	return render(request,"profile.html", {
+        'user': user,
+    })
 @login_required(login_url="/login/")
 def notifications(request):
 	return render(request,"notifications.html")

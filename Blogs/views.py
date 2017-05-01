@@ -40,7 +40,7 @@ def blog_index(request):
 	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 
 def popular(request):
-	blog_list = Blog.objects.order_by('-votes')
+	blog_list = Blog.objects.filter(isTut=False).order_by('-total_votes')
 	page = request.GET.get('page', 1)
 	x=2
 	paginator = Paginator(blog_list, 5)
@@ -53,7 +53,7 @@ def popular(request):
 	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 
 def recent(request):
-	blog_list = Blog.objects.order_by('-updated')
+	blog_list = Blog.objects.filter(isTut=False).order_by('-updated')
 	page = request.GET.get('page', 1)
 	x=3
 	paginator = Paginator(blog_list, 5)
@@ -66,7 +66,7 @@ def recent(request):
 	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 
 def data_structures(request):
-	blog_list = Blog.objects.filter(category__in=[1])
+	blog_list = Blog.objects.filter(category__in=[1], isTut=False)
 	page = request.GET.get('page', 1)
 	x=4
 	paginator = Paginator(blog_list, 5)
@@ -79,7 +79,7 @@ def data_structures(request):
 	return render(request, "blog_list.html", { 'blogs': blogs , 'x':x})
 
 def algorithms(request):
-	blog_list = Blog.objects.filter(category__in=[2])
+	blog_list = Blog.objects.filter(category__in=[2], isTut=False)
 	page = request.GET.get('page', 1)
 	x=5
 	paginator = Paginator(blog_list, 5)
@@ -112,6 +112,7 @@ def blog_detail(request, blog_id):
 def vote(request, blog_id):
 	blog=Blog.objects.get(pk=blog_id)
 	user = request.user
+	author= blog.author
 	vote_val = request.POST.get("vote", "")
 	
 	if vote_val == 'up':
@@ -128,11 +129,12 @@ def vote(request, blog_id):
 			if blog.upvotes.filter(id=user.id).exists():
 				blog.upvotes.remove(user)
 			blog.downvotes.add(user)
-	user.profile.contribution -= blog.total_votes
+	author.profile.contribution -= blog.total_votes
 	blog.total_votes = blog.upvotes.count() - blog.downvotes.count()
-	user.profile.contribution += blog.total_votes
+	author.profile.contribution += blog.total_votes
 	blog.save()
 	user.save()
+	author.save()
 	return redirect('blog_detail', blog_id)
 
 def tut_ds(request):

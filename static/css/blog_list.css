@@ -22,3 +22,59 @@ pre{
 	padding: 10px;
 	border-radius: 5px;
 }
+.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(214, 224, 226, 0.2);
+  }
+
+  .hovercard .cardheader {
+    background: url("https://i.ytimg.com/vi/QmRf5feJaUI/maxresdefault.jpg");
+    background-size: cover;
+    height: 300px;
+  }
+
+  .hovercard .avatar {
+    position: relative;
+    top: -50px;
+    align-self: center;
+    margin-bottom: -50px;
+  }
+
+  .hovercard .avatar img {
+    width: 150px;
+    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.5);
+  }
+
+  .hovercard .info {
+    padding: 4px 8px 10px;
+  }
+
+  .hovercard .info .title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+  }
+
+  .hovercard .info .desc {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #737373;
+    text-overflow: ellipsis;
+  }
+
+  .hovercard > .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+  }

@@ -30,8 +30,8 @@ class Blog(models.Model):
 	updated = models.DateTimeField(db_index=True, auto_now=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	tags = models.ManyToManyField(Tags, blank = True)
-	upvotes = models.ManyToManyField(User, related_name='blog_upvotes')
-	downvotes = models.ManyToManyField(User, related_name='blog_downvotes')
+	upvotes = models.ManyToManyField(User, related_name='blog_upvotes', blank=True)
+	downvotes = models.ManyToManyField(User, related_name='blog_downvotes', blank=True)
 	total_votes = models.IntegerField(default = 0)
 
 	def __str__(self):
