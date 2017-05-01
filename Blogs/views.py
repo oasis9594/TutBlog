@@ -30,7 +30,7 @@ def blog_index(request):
 	blog_list = blog_list1.filter(isTut=False)
 	page = request.GET.get('page', 1)
 	x=1
-	paginator = Paginator(blog_list, 5)
+	paginator = Paginator(blog_list, 3)
 	try:
 		blogs = paginator.page(page)
 	except PageNotAnInteger:
@@ -43,7 +43,7 @@ def popular(request):
 	blog_list = Blog.objects.filter(isTut=False).order_by('-total_votes')
 	page = request.GET.get('page', 1)
 	x=2
-	paginator = Paginator(blog_list, 5)
+	paginator = Paginator(blog_list, 3)
 	try:
 		blogs = paginator.page(page)
 	except PageNotAnInteger:
@@ -56,7 +56,7 @@ def recent(request):
 	blog_list = Blog.objects.filter(isTut=False).order_by('-updated')
 	page = request.GET.get('page', 1)
 	x=3
-	paginator = Paginator(blog_list, 5)
+	paginator = Paginator(blog_list, 3)
 	try:
 		blogs = paginator.page(page)
 	except PageNotAnInteger:
@@ -69,7 +69,7 @@ def data_structures(request):
 	blog_list = Blog.objects.filter(category__in=[1], isTut=False)
 	page = request.GET.get('page', 1)
 	x=4
-	paginator = Paginator(blog_list, 5)
+	paginator = Paginator(blog_list, 3)
 	try:
 		blogs = paginator.page(page)
 	except PageNotAnInteger:
@@ -82,7 +82,7 @@ def algorithms(request):
 	blog_list = Blog.objects.filter(category__in=[2], isTut=False)
 	page = request.GET.get('page', 1)
 	x=5
-	paginator = Paginator(blog_list, 5)
+	paginator = Paginator(blog_list, 3)
 	try:
 		blogs = paginator.page(page)
 	except PageNotAnInteger:

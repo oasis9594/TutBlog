@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -89,25 +89,23 @@
 
                         <br>
 
-                        <!--Featured image -->
-
 
                         <!--Post excerpt-->
-                        <p> {{ blog.body|safe|truncatewords:"50"|linebreaks }}</p>
+                        <p> {{ blog.body|safe|truncatewords:"45"|linebreaks }}</p>
 
                         <!--"Read more" button-->
                         <form action="{% url 'blog_detail' blog.id %}"><button class="btn purple">Read more</button></form>
                     </div>
                     <!--/.Post-->
 
-                    <hr>
+                    <hr/>
                     {% endfor %}
 
                     <!--Pagination-->
                     <nav>
                         <ul class="pagination flex-center pg-purple">
                             <!--Arrow left-->
-                            {% if users.has_previous %}
+                            {% if blogs.has_previous %}
                             <li class="page-item">
                                 <a class="page-link" aria-label="Previous" href="?page={{ blogs.previous_page_number }}">
                                     <span aria-hidden="true">&laquo;</span>
@@ -116,14 +114,14 @@
                             </li>
                             {% endif %}
                             <!--Numbers-->
-                            {% for i in users.paginator.page_range %}
-                                {% if users.number == i %}
+                            {% for i in blogs.paginator.page_range %}
+                                {% if blogs.number == i %}
                                     <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only">(current)</span></span></li>
                                 {% else %}
                                     <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
                                 {% endif %}
                             {% endfor %}
-                            {% if users.has_next %}
+                            {% if blogs.has_next %}
                             <!--Arrow right-->
                             <li class="page-item">
                                 <a class="page-link" aria-label="Next" href="?page={{ blogs.next_page_number }}">

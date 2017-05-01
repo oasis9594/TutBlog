@@ -99,7 +99,6 @@
             {% if forloop.counter|divisibleby:2 %}
                 <li class="timeline-inverted">
                   <div class="timeline-badge primary"><i class="fa fa-sort-amount-desc"></i></div>
-                  <a href="{% url 'tut_detail' tutorial.id %}">
                   <div class="timeline-panel">
                     <div class="timeline-heading">
                       <h4 class="timeline-title">{{ tutorial.topic }}</h4>
@@ -107,23 +106,21 @@
                     <div class="timeline-body">
                       <p>{{ tutorial.body|safe|truncatewords:"50"|linebreaks }}</p>
                     </div>
+                    <form action="{% url 'tut_detail' tutorial.id %}"><button class="btn btn-primary pull-right" type="submit" name="button">Read More</button></form>
                   </div>
-                  </a>
                 </li>
             {% else %}
                 <li>
                   <div class="timeline-badge primary"><i class="fa fa-stack-overflow"></i></div>
-                  <a href="{% url 'tut_detail' tutorial.id %}">
                   <div class="timeline-panel">
                     <div class="timeline-heading">
                       <h4 class="timeline-title">{{ tutorial.topic }}</h4>
-
                     </div>
                     <div class="timeline-body">
                       <p>{{ tutorial.body|safe|truncatewords:"50"|linebreaks }}</p>
                     </div>
+                    <form action="{% url 'tut_detail' tutorial.id %}"><button class="btn btn-primary pull-right" type="submit" name="button">Read More</button></form>
                   </div>
-                  </a>
                 </li>
             {% endif %}
         {% endfor %}

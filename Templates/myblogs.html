@@ -119,11 +119,14 @@
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
-						<h3>My Blogs</h3>
+						<div class="col-sm-12">
+							<h3>My Blogs</h3>
 						<hr/>
 					</div>
-					<div class="row">
-						{% for blog in blogs %}
+					{% for blog in blogs %}
+						{% if forloop.counter|divisibleby:3 %}
+						<div class="row">
+						{% endif %}
 						<div class="col-sm-4">
 							<div class="card">
 								<div class="card-header" data-background-color="purple">
@@ -135,22 +138,58 @@
 								</div>
 							</div>
 						</div>
+						{% if forloop.counter|divisibleby:3 %}
+						</div>
+						{% endif %}
+					{% endfor %}
+					{% if request.user.is_superuser %}
+						<div class="row">
+							<div class="col-sm-12">
+								<h3>My Tutorials</h3>
+							<hr/>
+						</div>
+						{% for blog in tutorials %}
+							{% if forloop.counter|divisibleby:3 %}
+							<div class="row">
+							{% endif %}
+							<div class="col-sm-4">
+								<div class="card">
+									<div class="card-header" data-background-color="purple">
+										<h4 class="title">{{ blog.title }}</h4>
+									</div>
+									<div class="card-content">
+										<p>{{ blog.body|safe|truncatewords:"20"|linebreaks }}</p>
+										<form action="{% url 'blog_detail' blog.id %}"><button class="btn btn-primary pull-right" type="submit" name="button">Read More</button></form>
+									</div>
+								</div>
+							</div>
+							{% if forloop.counter|divisibleby:3 %}
+							</div>
+							{% endif %}
 						{% endfor %}
+					{% endif %}
+					<div class="row">
+						<div class="col-sm-12">
+							<h3>Create a New Blog</h3>
+						<hr/>
+						</div>
 					</div>
 					<div class="row">
-						<h3>Create a New Blog</h3>
-						<hr/>
-					</div>
-					<div class="">
-						<form action="{% url 'create_blog' %}"><button class="btn btn-primary" type="submit" name="button">Create Blog</button></form>
+						<div class="col-sm-12">
+							<form action="{% url 'create_blog' %}"><button class="btn btn-primary" type="submit" name="button">Create Blog</button></form>
+						</div>
 					</div>
 					{% if request.user.is_superuser %}
 					<div class="row">
-						<h3>Create a New Tutorial</h3>
+						<div class="col-sm-12">
+							<h3>Create a New Tutorial</h3>
 						<hr/>
+						</div>
 					</div>
-					<div class="">
-						<form action="{% url 'tut_create' %}"><button class="btn btn-primary" type="submit" name="button">Create Tutorial</button></form>
+					<div class="row">
+						<div class="col-sm-12">
+							<form action="{% url 'tut_create' %}"><button class="btn btn-primary" type="submit" name="button">Create Tutorial</button></form>
+						</div>
 					</div>
 					{% endif %}
 				</div>
@@ -187,15 +226,15 @@
 
 
 
-<!--   Core JS Files   -->
-<script src="../static/jquery/jquery.min.js" type="text/javascript"></script>
-<script src="../static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../static/material-dashboard/js/material.min.js" type="text/javascript"></script>
+	<!--   Core JS Files   -->
+	<script src="{% static 'jquery/jquery.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'material-dashboard/js/material.min.js' %}" type="text/javascript"></script>
 
-<!--  Notifications Plugin    -->
-<script src="../static/bootstrap/js/bootstrap-notify.js"></script>
+	<!--  Notifications Plugin    -->
+	<script src="{% static 'bootstrap/js/bootstrap-notify.js' %}"></script>
 
-<!-- Material Dashboard javascript methods -->
-<script src="../static/material-dashboard/js/material-dashboard.js"></script>
+	<!-- Material Dashboard javascript methods -->
+	<script src="{% static 'material-dashboard/js/material-dashboard.js' %}"></script>
 
 </html>
