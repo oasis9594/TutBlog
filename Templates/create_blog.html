@@ -40,32 +40,32 @@
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
-					<li>
-						<a href="dashboard.html">
+					<li >
+						<a href="{% url 'dashboard'%}">
 							<i class="material-icons">dashboard</i>
 							<p>Dashboard</p>
 						</a>
 					</li>
 					<li>
-						<a href="user.html">
+						<a href="{% url 'user'%}">
 							<i class="material-icons">person</i>
 							<p>User Profile</p>
 						</a>
 					</li>
 					<li>
-						<a href="tutorial.html">
+						<a href="{% url 'tut_ds'%}">
 							<i class="material-icons">content_paste</i>
 							<p>Tutorial List</p>
 						</a>
 					</li>
 					<li>
-						<a href="notifications.html">
+						<a href="{% url 'notifications'%}">
 							<i class="material-icons text-gray">notifications</i>
 							<p>Notifications</p>
 						</a>
 					</li>
 					<li class="active">
-						<a href="myblogs.html">
+						<a href="{% url 'myblogs'%}">
 							<i class="material-icons">assignment</i>
 							<p>My Blogs</p>
 						</a>
@@ -197,34 +197,29 @@
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul>
-							<li>
-								<a href="#">
-									Home
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Company
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Portfolio
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Blog
-								</a>
-							</li>
-						</ul>
-					</nav>
-					<p class="copyright pull-right">
-						&copy; 2017, Copyright: TutBlog
-					</p>
-				</div>
+						<nav class="pull-left">
+							<ul>
+								<li>
+									<a href="{% url 'home' %}">
+										Home
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Company
+									</a>
+								</li>
+								<li>
+									<a href="{% url 'blog_index' %}">
+										Blog
+									</a>
+								</li>
+							</ul>
+						</nav>
+						<p class="copyright pull-right">
+							&copy; <script>document.write(new Date().getFullYear())</script> TutBlog</a>
+						</p>
+					</div>
 			</footer>
 		</div>
 	</div>
